@@ -10,4 +10,6 @@ app.get("/", (req, res) => {
   res.json({ status: "API is running" });
 });
 
+app.use("/api/auth", authRoutes);
+
 export default app;
