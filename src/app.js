@@ -10,4 +10,4 @@ app.get("/", (req, res) => {
   res.json({ status: "API is running" });
 });
 
-module.exports = app;
+export default app;
