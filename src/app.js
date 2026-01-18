@@ -4,10 +4,12 @@ import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import orderRoutes from "./routes/order.routes.js";
+import {stripeWebhook} from "./webhooks/stripe.webhook.js";
 
 const app = express();
 
 app.use(cors());
+app.post("/api/webhooks/stripe", express.raw({type: "application/json"}), stripeWebhook);
 app.use(express.json());
 
 app.get("/", (req, res) => {

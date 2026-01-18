@@ -1,0 +1,156 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+	  "title": "assignment",
+	  "version": "1.0.0",
+	  "description": ""
+	},
+	"servers": [
+	  {
+		"url": "{{baseUrl}}"
+	  },
+	  {
+		"url": "http://localhost:5000"
+	  }
+	],
+	"paths": {
+	  "/api/auth/login": {
+		"post": {
+		  "summary": "login",
+		  "responses": {},
+		  "requestBody": {
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "type": "object",
+				  "properties": {
+					"name": {
+					  "type": "string"
+					},
+					"email": {
+					  "type": "string",
+					  "format": "email"
+					},
+					"password": {
+					  "type": "string",
+					  "format": "color"
+					}
+				  }
+				},
+				"example": {
+				  "name": "Rahim",
+				  "email": "rahim@test.com",
+				  "password": "123456"
+				}
+			  }
+			}
+		  }
+		}
+	  },
+	  "/api/products": {
+		"get": {
+		  "summary": "products",
+		  "responses": {},
+		  "security": [
+			{
+			  "BearerAuth": []
+			}
+		  ],
+		  "requestBody": {
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "type": "object",
+				  "properties": {
+					"name": {
+					  "type": "string"
+					},
+					"price": {
+					  "type": "integer"
+					}
+				  }
+				},
+				"example": {
+				  "name": "Basic Plan",
+				  "price": 500
+				}
+			  }
+			}
+		  }
+		}
+	  },
+	  "/api/orders": {
+		"post": {
+		  "summary": "order",
+		  "responses": {},
+		  "security": [
+			{
+			  "BearerAuth": []
+			}
+		  ],
+		  "requestBody": {
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "type": "object",
+				  "properties": {
+					"productId": {
+					  "type": "string"
+					}
+				  }
+				},
+				"example": {
+				  "productId": "696d0cf3d5ab2a3189d23a02"
+				}
+			  }
+			}
+		  }
+		},
+		"get": {
+		  "summary": "ordercheck",
+		  "responses": {},
+		  "security": [
+			{
+			  "BearerAuth": []
+			}
+		  ]
+		}
+	  },
+	  "/api/orders/checkout-session": {
+		"post": {
+		  "summary": "checkout-session",
+		  "responses": {},
+		  "security": [
+			{
+			  "BearerAuth": []
+			}
+		  ],
+		  "requestBody": {
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "type": "object",
+				  "properties": {
+					"orderId": {
+					  "type": "string"
+					}
+				  }
+				},
+				"example": {
+				  "orderId": "696d0dbcd5ab2a3189d23a08"
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	},
+	"components": {
+	  "securitySchemes": {
+		"BearerAuth": {
+		  "type": "http",
+		  "scheme": "bearer"
+		}
+	  }
+	}
+  }
