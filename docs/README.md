@@ -33,7 +33,7 @@ This documentation provides a complete guide to using the Stripe Backend API Pos
 
 | Variable | Initial Value | Current Value |
 |----------|---------------|---------------|
-| `base_url` | `http://localhost:3001` | `http://localhost:3001` |
+| `base_url` | `http://localhost:5000` | `http://localhost:5000` |
 | `auth_token` | (leave empty) | (will be auto-filled) |
 | `user_id` | (leave empty) | (will be auto-filled) |
 | `product_id` | (leave empty) | (will be auto-filled) |
@@ -49,7 +49,7 @@ This documentation provides a complete guide to using the Stripe Backend API Pos
 Ensure your backend server is running with the following environment variables in your `.env` file:
 
 ```env
-PORT=3001
+PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
@@ -579,7 +579,7 @@ Before testing, ensure you have:
 
 3. **Environment variables set**
    ```env
-   PORT=3001
+   PORT=5000
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret_key
    STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
@@ -603,7 +603,7 @@ npm start
 npm run dev
 ```
 
-**Expected:** Server logs show "Server running on http://localhost:3001"
+**Expected:** Server logs show "Server running on http://localhost:5000"
 
 ### Step-by-Step Test Flow
 
@@ -611,7 +611,7 @@ npm run dev
 
 **Request:**
 ```
-POST http://localhost:3001/api/products
+POST http://localhost:5000/api/products
 ```
 
 **Headers:**
@@ -645,7 +645,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-POST http://localhost:3001/api/orders
+POST http://localhost:5000/api/orders
 ```
 
 **Headers:**
@@ -684,7 +684,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-POST http://localhost:3001/api/orders/checkout-session
+POST http://localhost:5000/api/orders/checkout-session
 ```
 
 **Headers:**
@@ -731,7 +731,7 @@ Content-Type: application/json
 **Open a new terminal:**
 
 ```bash
-stripe listen --forward-to localhost:3001/api/webhooks/stripe
+stripe listen --forward-to localhost:5000/api/webhooks/stripe
 ```
 
 **You will see:**
@@ -788,7 +788,7 @@ npm start
 
 **Request:**
 ```
-GET http://localhost:3001/api/orders
+GET http://localhost:5000/api/orders
 ```
 
 **Headers:**
@@ -827,7 +827,7 @@ Authorization: Bearer <your_token>
 4. Signature verification failing
 
 **Solutions:**
-1. Check Stripe CLI is running: `stripe listen --forward-to localhost:3001/api/webhooks/stripe`
+1. Check Stripe CLI is running: `stripe listen --forward-to localhost:5000/api/webhooks/stripe`
 2. Verify `STRIPE_WEBHOOK_SECRET` in `.env` matches CLI output
 3. Check server logs for webhook errors
 4. Verify webhook endpoint is accessible
@@ -962,7 +962,7 @@ Authorization: Bearer <your_token>
 **Solutions:**
 1. **Check Stripe CLI is running:**
    ```bash
-   stripe listen --forward-to localhost:3001/api/webhooks/stripe
+   stripe listen --forward-to localhost:5000/api/webhooks/stripe
    ```
 
 2. **Verify webhook secret:**
@@ -1034,7 +1034,7 @@ Use these test cards in Stripe Checkout:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `PORT` | Server port | `3001` |
+| `PORT` | Server port | `5000` |
 | `MONGO_URI` | MongoDB connection string | `mongodb://localhost:27017/stripe-db` |
 | `JWT_SECRET` | Secret for JWT signing | `your-secret-key` |
 | `STRIPE_SECRET_KEY` | Stripe secret key (test mode) | `sk_test_...` |
