@@ -1053,4 +1053,3 @@ pending → paid (via webhook)
 
 ---
 
-**Last Updated:** 2024

@@ -8,7 +8,11 @@ import {stripeWebhook} from "./webhooks/stripe.webhook.js";
 
 const app = express();
 
-app.use(cors());
+// CORS configuration - allow all origins in development, specific origin in production
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true
+}));
 app.post("/api/webhooks/stripe", express.raw({type: "application/json"}), stripeWebhook);
 app.use(express.json());
 
